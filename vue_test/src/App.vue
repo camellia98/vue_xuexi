@@ -4,6 +4,8 @@
 		<List/>
     </div>
 
+
+<!-- avatar_url头像地址；html_url（github主页地址）；login用户的登录名 -->
 </template>
 
 <script> 

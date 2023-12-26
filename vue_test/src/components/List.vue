@@ -1,35 +1,18 @@
 <template>
 <div class="row">
-    <div class="card">
-        <a href="https://github.com/xxxxxx" target="_blank">
-        <img src="https://cn.vuejs.org/logo.svg" style='width: 100px'/>
+    <!-- 展示用户列表 -->
+    <div v-show="info.users.length" class="card" v-for="user in info.users" :key="user.login">
+        <a :href="user.html_url" target="_blank">
+        <img :src="user.avatar_url" style='width: 100px'/>
         </a>
-        <p class="card-text">xxxxxx</p>
+        <p class="card-text">{{user.login}}</p>
     </div>
-    <div class="card">
-        <a href="https://github.com/xxxxxx" target="_blank">
-        <img src="https://cn.vuejs.org/logo.svg" style='width: 100px'/>
-        </a>
-        <p class="card-text">xxxxxx</p>
-    </div>
-    <div class="card">
-        <a href="https://github.com/xxxxxx" target="_blank">
-        <img src="https://cn.vuejs.org/logo.svg" style='width: 100px'/>
-        </a>
-        <p class="card-text">xxxxxx</p>
-    </div>
-    <div class="card">
-        <a href="https://github.com/xxxxxx" target="_blank">
-        <img src="https://cn.vuejs.org/logo.svg" style='width: 100px'/>
-        </a>
-        <p class="card-text">xxxxxx</p>
-    </div>
-    <div class="card">
-        <a href="https://github.com/xxxxxx" target="_blank">
-        <img src="https://cn.vuejs.org/logo.svg" style='width: 100px'/>
-        </a>
-        <p class="card-text">xxxxxx</p>
-    </div>
+    <!-- 展示欢迎词 -->
+    <h1 v-show="info.isFirst">欢迎使用！</h1>
+    <!-- 展示加载中 -->
+    <h1 v-show="info.isLoading">加载中。。。</h1>
+    <!-- 展示错误信息 -->
+    <h1 v-show="info.errMsg">{{ info.errMsg }}</h1>
 </div>
 </template>
 
@@ -37,13 +20,29 @@
     export default{
         name:'List',
         data(){
-            
+            return {
+                info:{
+                    isFirst:true,//is开头的都是布尔值，真假判断
+                    isLoading:false,
+                    errMsg:'',
+                    users:[] 
+                }
+                
+			}
+        },
+        mounted(){
+            this.$bus.$on('updataListData',(dataObj)=>{
+                // console.log('我是List组件，收到数据',users);
+                console.log(dataObj);
+                // this.info = dataObj
+                this.info = {...this.info,...dataObj}
+            })
         }
        
     }
 </script>
 
-<style>
+<style scoped>
     .album {
 		min-height: 50rem; /* Can be removed; just added for demo purposes */
 		padding-top: 3rem;
