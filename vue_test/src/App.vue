@@ -1,7 +1,8 @@
 <template>
 	<div class="container">
-		<Search/>
-		<List/>
+		<Catefory title="美食" :listData="foods"></Catefory>
+		<Catefory title="游戏" :listData="games"></Catefory>
+		<Catefory title="电影" :listData="films"></Catefory>
     </div>
 
 
@@ -9,20 +10,32 @@
 </template>
 
 <script> 
-	import Search from './components/Search.vue'
-	import List from './components/List.vue'
+	import Catefory from './components/Category.vue'
 	export default {
 		name:'App',
 		components:{
-			Search,
-			List
+			Catefory
+		},
+		data(){
+			return{
+				foods:['火锅','烧烤','小龙虾','牛排'],
+				games:['红色警戒','穿越火线','劲舞团','超级玛丽'],
+				films:['《教父》','《拆弹专家》','《你好，李焕英》','《尚硅谷》']
+			}
 		}
 		
 	}
 	
 </script>
 
-<style>
-	
+<style lang="css">
+	.container{
+		display: flex;
+		justify-content: space-around;
+	}
+	h3{
+		text-align: center;
+		background-color: orange;
+	}
 
 </style>
