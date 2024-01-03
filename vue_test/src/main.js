@@ -6,16 +6,17 @@ import App from './App.vue'
 // 引入插件
 import vueResource from 'vue-resource'
 
-// 引入vuex
-import Vuex from 'vuex'
+
+// 引入store
+import store from './store/index'
+
 //关闭Vue的生产提示
 Vue.config.productionTip = false
 
 // 使用插件
 Vue.use(vueResource)
 
-// 使用vuex
-Vue.use(Vuex)
+
 // 创建vm
 new Vue({
 	el:'#app',
@@ -26,6 +27,7 @@ new Vue({
 	// 	}, 3000);
 		
 	// }
+	store,
 	beforeCreate(){
 		Vue.prototype.$bus = this
 	}	
