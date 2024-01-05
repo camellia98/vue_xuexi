@@ -2,9 +2,9 @@
 	<!-- 对象：action动作，行为；mutation修改，加工，维护；state（是个对象）状态是数据 -->
 	<!-- 函数：dispatch,commit（提交，委托），mutate加工，修改，store仓库 -->
 	<div>
-		<h1>当前求和为：{{sum}}</h1>
+		<h1>当前求和为：{{he}}</h1>
 		<h3>当前求和放大10倍为：{{bigSum}}</h3>
-		<h3>我在{{school}},学习{{subject}}</h3>
+		<h3>我在{{xuexiao}},学习{{xueke}}</h3>
 		<select v-model.number="n">
 			<option value="1">1</option>
 			<option value="2">2</option>
@@ -27,15 +27,18 @@
 			}
 		},
 		computed:{
-			sum(){
-				return this.$store.state.sum
-			},
-			school(){
-				return this.$store.state.school
-			},
-			subject(){
-				return this.$store.state.subject
-			},
+			// he(){
+			// 	return this.$store.state.sum
+			// },
+			// xuexiao(){
+			// 	return this.$store.state.school
+			// },
+			// xueke(){
+			// 	return this.$store.state.subject
+			// },
+
+			// 借助mapState生成计算属性，从state中读取数据
+			... mapState({he:'sum',xuexiao:'school',xueke:'subject'}),
 			bigSum(){
 				return this.$store.getters.bigSum
 			},
@@ -56,6 +59,7 @@
 		},
 		mounted() {
 			console.log('Count',this)
+			const x = mapState({he:'sum',xuexiao:'school',xueke:'subject'})
 		},
 	}
 </script>
