@@ -62,10 +62,7 @@ const state = {
     // 当前的和
     sum:0,
     school:'尚硅谷',
-    subject:'前端',
-    personList:[
-        {id:'001',name:'张三'}
-    ]
+    subject:'前端'
 }
 
 // 准备getters————用于将state中的数据进行加工

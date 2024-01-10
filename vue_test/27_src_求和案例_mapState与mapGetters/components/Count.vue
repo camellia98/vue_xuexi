@@ -43,7 +43,7 @@
 		methods: {
 			// increment(){
 			// 	this.$store.commit('JIA',this.n)
-			// },27_src_求和案例_mapState与mapGetters
+			// },
 			// decrement(){
 			// 	this.$store.commit('JIAN',this.n)
 			// },
